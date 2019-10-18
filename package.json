@@ -1,0 +1,43 @@
+{
+  "name": "react-native-lcrew-forms",
+  "title": "React Native LCrew Forms",
+  "version": "0.0.1",
+  "description": "Forms for react native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorcrevar/react-native-lcrew-forms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/igorcrevar/react-native-lcrew-forms/issues"
+  },
+  "keywords": [
+    "react-native",
+    "forms",
+    "react"
+  ],
+  "author": {
+    "name": "Igor Crevar",
+    "email": "crewce@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "react-lcrew-forms-base": "git+https://github.com/igorcrevar/react-lcrew-forms-base.git"
+  },
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.59.0-rc.0 <1.0.x"
+  },
+  "optionalDependencies": {
+    "react-native-vector-icons": ">=6.4.2"
+  },
+  "devDependencies": {
+    "react": "^16.8.3",
+    "react-native": "^0.59.10"
+  }
+}
