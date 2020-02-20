@@ -1,11 +1,13 @@
 {
   "name": "react-native-lcrew-forms",
   "title": "React Native LCrew Forms",
-  "version": "0.0.1",
+  "version": "0.9.0",
   "description": "Forms for react native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lib:dev": "rollup -c -o dist/lcrew-forms-base.dev.js",
+    "lib:prod": "cross-env NODE_ENV=production rollup -c -o dist/lcrew-forms-base.min.js"
   },
   "repository": {
     "type": "git",
@@ -26,18 +28,30 @@
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "react-lcrew-forms-base": "git+https://github.com/igorcrevar/react-lcrew-forms-base.git"
   },
   "peerDependencies": {
     "react": "^16.8.1",
-    "react-native": ">=0.59.0-rc.0 <1.0.x"
+    "react-native": ">=0.59.0-rc.0"
   },
   "optionalDependencies": {
     "react-native-vector-icons": ">=6.4.2"
   },
   "devDependencies": {
-    "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-react": "^7.7.4",
+    "cross-env": "^6.0.3",
+    "rollup": "^1.27.11",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-uglify": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^6.0.0"
   }
 }

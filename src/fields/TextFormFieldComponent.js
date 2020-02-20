@@ -5,7 +5,7 @@ import { formsStyle } from '../styles/FormsStyles'
 import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 
 function renderField(props) {
-    const { style, changeValue, autoCapitalize, returnKeyType, multiline, fieldEnabled, CustomTextInput } = props
+    const { style, changeValue, multiline, fieldEnabled, CustomTextInput } = props
     const concreteStyle = fieldEnabled 
         ? (multiline ? style.formFieldTextInputLarge : style.formFieldTextInput) 
         : style.formFieldTextInputDisabled
@@ -13,8 +13,6 @@ function renderField(props) {
         <CustomTextInput
             {...props}
             editable={fieldEnabled}
-            autoCapitalize={autoCapitalize || 'none'}
-            returnKeyType={returnKeyType || 'done'}
             style={concreteStyle}
             onChangeText={changeValue} />
     )

@@ -2,7 +2,7 @@
 
 ## Getting started
 
-`$ npm install git+https://github.com/igorcrevar/react-native-lcrew-forms.git --save`
+`$ npm install react-native-lcrew-forms`
 
 ## Usage
 ```javascript

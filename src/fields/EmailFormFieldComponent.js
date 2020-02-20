@@ -16,6 +16,7 @@ EmailFormFieldComponent.defaultProps = {
     dependencies: undefined,
     validators: undefined,
     validateOnBlur: false,
+    autoCapitalize: 'none',
     onBlur: undefined, // (name, value, error) => {}
     Template: FormFieldBasicTemplateComponent,
     style: formsStyle,
