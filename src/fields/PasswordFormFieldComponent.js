@@ -1,7 +1,5 @@
 import React from 'react'
 import { FormField } from 'react-lcrew-forms-base'
-import { formsStyle } from '../styles/FormsStyles'
-import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 import InputPasswordComponent from '../components/InputPasswordComponent'
 
 function renderField(props) {
@@ -22,8 +20,8 @@ PasswordFormFieldComponent.defaultProps = {
     validators: undefined,
     validateOnBlur: false,
     onBlur: undefined, // (name, value, error) => {}
-    Template: FormFieldBasicTemplateComponent,
-    style: formsStyle,
+    Template: undefined, // FormFieldBasicTemplateComponent,
+    style: undefined, // formsStyle,
     renderRevelIcon: undefined,
     renderHideIcon: undefined,
 }

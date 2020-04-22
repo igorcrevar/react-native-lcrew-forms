@@ -1,7 +1,5 @@
 import React from 'react'
 import { FormField } from 'react-lcrew-forms-base'
-import { formsStyle } from '../styles/FormsStyles'
-import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 import AutoCompleteComponent from '../components/AutoCompleteComponent'
 
 function valueFilterSingle(value) {
@@ -11,12 +9,11 @@ function valueFilterSingle(value) {
 function renderField(props) {
     const {
         value, changeValue, fieldEnabled, onBlur,
-        autocompleteStyle, single, maxSelectedItemsCount,
+        single, maxSelectedItemsCount,
     } = props
     return (
         <AutoCompleteComponent
             {...props}
-            style={autocompleteStyle}
             onTextInputBlur={onBlur}
             enabled={fieldEnabled}
             selectedItems={value}
@@ -42,8 +39,8 @@ AutoCompleteFormFieldComponent.defaultProps = {
     validateOnBlur: false,
     onBlur: undefined, // (name, value, error) => {}
     dependencies: undefined, // for example: ['email', 'date']
-    Template: FormFieldBasicTemplateComponent,
-    style: formsStyle,
+    Template: undefined, // FormFieldBasicTemplateComponent,
+    style: undefined, // formsStyle,
     
     filterItems: undefined,
     getItemId: undefined,
@@ -54,5 +51,4 @@ AutoCompleteFormFieldComponent.defaultProps = {
     maxSelectedItemsCount: 2,
     autocompleteStyle: undefined,
     searchTimeout: undefined,
-    ItemSeparatorComponent: undefined,
 }

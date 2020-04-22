@@ -1,8 +1,6 @@
 import React from 'react'
 import { Picker } from 'react-native'
 import { FormField } from 'react-lcrew-forms-base'
-import { formsStyle } from '../styles/FormsStyles'
-import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 
 function renderField(props) {
     const { style, changeValue, items, value, fieldEnabled, itemValue, itemLabel } = props
@@ -36,6 +34,6 @@ PickerFormFieldComponent.defaultProps = {
     fieldEnabled: true,
     validators: undefined,
     dependencies: undefined, // for example: ['email', 'date']
-    Template: FormFieldBasicTemplateComponent,
-    style: formsStyle,
+    Template: undefined, // FormFieldBasicTemplateComponent,
+    style: undefined, // formsStyle,
 }

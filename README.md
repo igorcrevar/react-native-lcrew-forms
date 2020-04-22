@@ -71,7 +71,10 @@ class SomeComponent extends React.Component {
         return (
             <ScrollView>
                 <KeyboardShift>
-                    <Form omSubmit={this.formSubmit} clearFieldsAfterSubmit={true}>
+                    <FormRN
+                        onSubmit={this.formSubmit}
+                        clearFieldsAfterSubmit={true}>
+                    >
                         <ErrorFormField /> 
                         <HiddenFormField name="id" value="5" />
                         <TextFormField name="name" label="Name" validators={validators.required} value="Unknown" />
@@ -90,7 +93,7 @@ class SomeComponent extends React.Component {
                                 !value ? [] : items.filter(x => x.name.includes(value.toLowerCase()))} 
                             items={autoCompleteItems} />
                         <SubmitFormField buttonTitle='Save' />
-                    </Form>
+                    </FormRN>
                 </KeyboardShift>
             </ScrollView>
         )
