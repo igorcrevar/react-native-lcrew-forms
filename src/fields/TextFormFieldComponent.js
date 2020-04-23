@@ -1,8 +1,5 @@
 import React from 'react'
-import { TextInput } from 'react-native'
 import { FormField } from 'react-lcrew-forms-base'
-import { formsStyle } from '../styles/FormsStyles'
-import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 
 function renderField(props) {
     const { style, changeValue, multiline, fieldEnabled, CustomTextInput } = props
@@ -23,7 +20,7 @@ export default function TextFormFieldComponent(props) {
 }
 
 TextFormFieldComponent.defaultProps = {
-    CustomTextInput: TextInput,
+    CustomTextInput: undefined, // TextInput,
     label: 'Text Field',
     name: 'name',
     value: '',
@@ -33,6 +30,6 @@ TextFormFieldComponent.defaultProps = {
     validateOnBlur: false,
     onBlur: undefined, // (name, value, error) => {}
     dependencies: undefined, // for example: ['email', 'date']
-    Template: FormFieldBasicTemplateComponent,
-    style: formsStyle,
+    Template: undefined, // FormFieldBasicTemplateComponent,
+    style: undefined, // formsStyle,
 }

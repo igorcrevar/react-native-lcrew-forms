@@ -1,11 +1,7 @@
 import { StyleSheet, Platform } from 'react-native'
 
 const fieldHeight = Platform.OS === 'ios' ? 40 : 30
-
-export const activityIndicatorDefaultProps = {
-    size: 'large',
-    color: '#00ff00',
-}
+const RenderItemHeight = 45
 
 export const formsStyle = StyleSheet.create({
     formGlobalError: {
@@ -99,5 +95,47 @@ export const formsStyle = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+
+    // autocomplete
+    acMainContainer: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+    },
+    acSelectedItemsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginLeft: 5,
+    },
+    acSelectedItemContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 2,
+    },
+    acSelectedItemText: {
+        // TODO:
+    },
+    acSelectedItemRemoveButton: {
+        width: 30,
+        marginLeft: 4,
+        marginRight: 4,
+    },
+    acDropDownList: {
+        flex: 1, 
+        backgroundColor: '#f6f6f6',
+    },
+    acDropDownListSeparator: {
+        borderBottomWidth: 1, 
+        borderBottomColor: 'rgba(0, 173, 238, 1)'
+    },
+    acDropDownItemContainer: {
+        height: RenderItemHeight,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        marginLeft: 5,
+        marginRight: 5,
+    },
+    acDropDownItemText: {
+        fontSize: 16
     },
 })

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, TextInput, TouchableOpacity, Text } from 'react-native'
-import { autocompleteStyle } from '../styles/AutocompleteStyle'
+import { View, TouchableOpacity } from 'react-native'
 import IconsService from '../additional/IconsService'
 import { useAutocomplete } from 'react-lcrew-forms-base'
 
@@ -10,7 +9,7 @@ const emptyArray = []
 function AutoCompleteComponent({
     items, selectedItems, setSelectedItems, getItemId, filterItems,
     searchTimeout, maxItemsCount, maxSelectedItemsCount, CustomText, CustomTextInput,
-    enabled, style, onTextInputBlur, Item, SelectedItem, ItemSeparatorComponent
+    enabled, style, onTextInputBlur, Item, SelectedItem, RemoveIcon,
 }) {
     selectedItems = selectedItems || emptyArray
     const autocomplete = useAutocomplete(items, selectedItems, setSelectedItems, getItemId, 
@@ -22,29 +21,34 @@ function AutoCompleteComponent({
 
     const textInputEditable = enabled && (!maxSelectedItemsCount || maxSelectedItemsCount > selectedItems.length)
      return (
-        <View style={style.mainView}>
-            <View style={style.selectedItemsContainer}>
+        <View style={style.acMainContainer}>
+            <View style={style.acSelectedItemsContainer}>
                 {selectedItems.map(id => 
-                    <SelectedItem item={itemsMap[id]} onPress={enabled && onRemoveSelectedItemPress} 
-                        key={id} CustomText={CustomText} />
+                    <SelectedItem
+                        key={id}
+                        item={itemsMap[id]}
+                        onPress={enabled && onRemoveSelectedItemPress} 
+                        CustomText={CustomText}
+                        RemoveIcon={RemoveIcon}
+                        style={style} />
                 )}
             </View>
             {
                 textInputEditable &&
                 <CustomTextInput
                     returnKeyType={'done'}
-                    style={style.textInput}
+                    style={style.formFieldTextInput}
                     onBlur={onTextInputBlur}
                     onChangeText={onSearchTextChange}
                     value={searchText} />
             }
             {
                 !!searchText && availableItems && 
-                <View style={style.flatList}>
+                <View style={style.acDropDownList}>
                     {availableItems.map((item, index) =>
                         <View key={getItemId(item)}>
-                            <Item item={item} onPress={enabled && onItemPress} CustomText={CustomText} />
-                            {index + 1 < availableItems.length && <ItemSeparatorComponent />}
+                            <Item item={item} onPress={enabled && onItemPress} CustomText={CustomText} style={style} />
+                            {index + 1 < availableItems.length && <View style={style.acDropDownListSeparator} />}
                         </View>
                     )}
                 </View>
@@ -56,8 +60,8 @@ function AutoCompleteComponent({
 export default React.memo(AutoCompleteComponent)
 
 AutoCompleteComponent.defaultProps = {
-    CustomTextInput: TextInput,
-    CustomText: Text,
+    CustomTextInput: undefined, // TextInput,
+    CustomText: undefined, // Text,
     setSelectedItems: undefined,
     getItemId: item => item.id,
     Item: React.memo(Item),
@@ -72,11 +76,11 @@ AutoCompleteComponent.defaultProps = {
     selectedItems: [],
     maxItemsCount: 6,
     maxSelectedItemsCount: 2,
-    style: autocompleteStyle,
+    style: undefined,
     enabled: true,
     onTextInputBlur: undefined,
     searchTimeout: 500,
-    ItemSeparatorComponent: React.memo(ItemSeparatorComponent),
+    RemoveIcon: IconsService.RemoveIcon,
 }
 
 AutoCompleteComponent.propTypes = {
@@ -94,39 +98,33 @@ AutoCompleteComponent.propTypes = {
     style: PropTypes.object,
     enabled: PropTypes.bool,
     searchTimeout: PropTypes.number,
-    ItemSeparatorComponent: PropTypes.elementType,
+    RemoveIcon: PropTypes.elementType,
 }
 
-function ItemSeparatorComponent(_props) {
+function SelectedItem({ item, onPress, CustomText, style, RemoveIcon }) {
     return (
-        <View style={autocompleteStyle.separator} />
-    )
-}
-
-function SelectedItem({ item, onPress, CustomText }) {
-    return (
-        <View style={autocompleteStyle.selectedItem}>
-            <CustomText>{item.name}</CustomText>
+        <View style={style.acSelectedItemContainer}>
+            <CustomText style={style.acSelectedItemText}>{item.name}</CustomText>
             {
                 !!onPress &&
-                <TouchableOpacity onPress={() => onPress(item)} style={autocompleteStyle.selectedItemRemoveButton}>
-                    <IconsService.RemoveIcon />
+                <TouchableOpacity onPress={() => onPress(item)} style={style.acSelectedItemRemoveButton}>
+                    <RemoveIcon />
                 </TouchableOpacity>
             }
         </View>
     )
 }
 
-function Item({ item, onPress, CustomText }) {
+function Item({ item, onPress, CustomText, style }) {
     if (!onPress) {
-        return <CustomText>{item.name}</CustomText>
+        return <CustomText style={style.acDropDownItemText}>{item.name}</CustomText>
     }
 
     return (
         <TouchableOpacity
-            style={autocompleteStyle.dropdownItemContainer}
+            style={style.acDropDownItemContainer}
             onPress={() => onPress(item)}>
-            <Text>{item.name}</Text>
+            <CustomText style={style.acDropDownItemText}>{item.name}</CustomText>
         </TouchableOpacity>
     )
 }

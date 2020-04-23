@@ -1,6 +1,4 @@
 import React from 'react'
-import { formsStyle } from '../styles/FormsStyles'
-import FormFieldBasicTemplateComponent from '../base/FormFieldBasicTemplateComponent'
 import TextFormFieldComponent from './TextFormFieldComponent'
 
 export default function EmailFormFieldComponent(props) {
@@ -18,6 +16,6 @@ EmailFormFieldComponent.defaultProps = {
     validateOnBlur: false,
     autoCapitalize: 'none',
     onBlur: undefined, // (name, value, error) => {}
-    Template: FormFieldBasicTemplateComponent,
-    style: formsStyle,
+    Template: undefined, // FormFieldBasicTemplateComponent,
+    style: undefined, // formsStyle,
 }

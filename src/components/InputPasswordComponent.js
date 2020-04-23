@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TextInput, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import IconsService from '../additional/IconsService'
 
@@ -36,7 +36,7 @@ InputPasswordComponent.propTypes = {
 }
 
 InputPasswordComponent.defaultProps = {
-    CustomTextInput: TextInput,
+    CustomTextInput: undefined, // TextInput,
     RevealIcon: IconsService.RevealIcon,
     HideIcon: IconsService.HideIcon,
 }

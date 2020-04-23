@@ -1,15 +1,15 @@
 import React from 'react'
-import { View, Button, ActivityIndicator } from 'react-native'
-import { activityIndicatorDefaultProps, formsStyle } from '../styles/FormsStyles'
+import { View, ActivityIndicator } from 'react-native'
 
-function FormSubmitComponent({
+function FormFieldSubmitTemplateComponent({
     disabled,
     isSubmitted,
-    dispatch,
-    style = formsStyle,
+    onSubmit,
+    style,
+    CustomButton,
+    activityIndicatorProps = defaultActivityIndicatorProps,
     buttonTitle = 'Submit',
     showActivityIndicator = true,
-    CustomButton = Button,
 }) {
     // console.log('Render submit form template: ', isSubmitted, disabled)
     return (
@@ -19,17 +19,22 @@ function FormSubmitComponent({
                     buttonStyle={style.formSubmitButton}
                     containerStyle={style.formSubmitButtonButtonContainer}
                     disabled={disabled}
-                    onPress={() => dispatch({ type: 'submit' })}
+                    onPress={onSubmit}
                     title={buttonTitle} />
             </View>
 
             {showActivityIndicator && isSubmitted &&
                 <View style={style.activityIndicatorContainer}>
-                    <ActivityIndicator {...activityIndicatorDefaultProps} />
+                    <ActivityIndicator {...activityIndicatorProps} />
                 </View>
             }
         </>
     )
 }
 
-export default React.memo(FormSubmitComponent)
+export default React.memo(FormFieldSubmitTemplateComponent)
+
+const defaultActivityIndicatorProps = {
+    size: 'large',
+    color: '#00ff00',
+}
