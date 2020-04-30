@@ -8,7 +8,8 @@ function FormFieldBasicTemplateComponent(props) {
     } = props
 
     // console.log('Field rendered: name=', props.name, ' value=', props.value, ' error=', error, ' enabled=', fieldEnabled)
-    if (!fieldEnabled && hideIfNotEnabled) {
+    if (!fieldEnabled && hideIfNotEnabled || 
+        !label && !renderField && (!showError || !error)) {
         return null
     }
 
