@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, ActivityIndicator } from 'react-native'
+import React, { useCallback } from 'react'
+import { View, ActivityIndicator, Keyboard } from 'react-native'
 
 function FormFieldSubmitTemplateComponent({
     disabled,
@@ -11,6 +11,10 @@ function FormFieldSubmitTemplateComponent({
     buttonTitle = 'Submit',
     showActivityIndicator = true,
 }) {
+    const onSubmitCall = useCallback(() => {
+        Keyboard.dismiss();
+        onSubmit();
+    }, [onSubmit])
     // console.log('Render submit form template: ', isSubmitted, disabled)
     return (
         <>
@@ -19,7 +23,7 @@ function FormFieldSubmitTemplateComponent({
                     buttonStyle={style.formSubmitButton}
                     containerStyle={style.formSubmitButtonButtonContainer}
                     disabled={disabled}
-                    onPress={onSubmit}
+                    onPress={onSubmitCall}
                     title={buttonTitle} />
             </View>
 

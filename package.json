@@ -1,7 +1,7 @@
 {
   "name": "react-native-lcrew-forms",
   "title": "React Native LCrew Forms",
-  "version": "0.9.12",
+  "version": "0.9.13",
   "description": "Forms for react native",
   "main": "index.js",
   "scripts": {
